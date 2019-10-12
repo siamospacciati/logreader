@@ -1,22 +1,23 @@
 import java.io.File;
+import java.io.IOException;
 
 import routine.Routine;
 import utility.Utility;
 
 public class Main {
 
-	public Main() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public static void main(String[] args) {
-		File log = new File("20191012.log");
-		int type = Utility.FileType (log);
-		System.out.println(type);
-		Routine r = new Routine();
-		r.SelectAnalyser(type);
+	public static void main(String[] args) throws IOException {
+		//File log = new File("20191012.log");
 		
-		return;		
+		File[] files = new File("./src/input").listFiles();
+		File log = files[0];
+		Utility.results("Log name: "+log.getName(), 0);
+		int type = Utility.fileType(log);
+		Utility.results("", type);
+		Routine r = new Routine();
+		r.selectAnalyser(type);
+		
+		return;
 	}
 
 }
